@@ -1,0 +1,39 @@
+*{margin:0; padding:0;}
+.container{
+    width:980px;
+    margin:0 auto;
+}
+header{
+    height:150px;
+    text-align: center;
+    line-height: 150px;
+}
+.container article{
+    font-size: 0;
+    border-top:1px #ddd solid;
+}
+.container article#intro{
+    border-top:3px #000 solid;
+}
+.container article#ing{
+    border-bottom:3px #000 solid;
+}
+article>div,article>section{
+    display:inline-block;
+    font-size: initial;
+}
+article>div{
+    width: 200px;
+    padding :50px;
+    margin: 10px 0;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+}
+article>section{
+    margin: 10px 0;
+    border-left: 1px solid #ddd;
+    padding: 10px 20px;
+    width: 780px;
+    box-sizing: border-box;
+}
