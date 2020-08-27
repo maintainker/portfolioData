@@ -33,6 +33,7 @@
                 keyStr += String.fromCharCode(keyArr[i]);
             }
             RSAPubkey = btoa(keyStr);
+            var textBox= document.querySelector(".textBox");
             textBox.innerHTML = "RSA PubKey : " + RSAPubkey + "</br></br>";
         })
         const AESencrypt = (plainData) =>{
