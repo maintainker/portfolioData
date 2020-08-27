@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text" id="plainData" value="nFilter/123">
+    <button id="AESencryption">AES암호화</button>
+    <button id="encryption">암호화</button>
+    <button id="decryption">복호화</button>
+    <button id="AESdecryption">AES복호화</button>
+    <div class="textBox"></div>
+
+    <script src="./certModule.js"></script>
+    <script src="./test.js"></script>
+    <script>
+        // console.log(a)
+        var textBox = document.querySelector(".textBox");
+        document.querySelector("#AESencryption").addEventListener("click",()=>{
+            const plainData = document.querySelector("#plainData").value;
+            AESencrypt(plainData);
+            setTimeout(()=>{
+                let encAESData = nshcAESEncData;
+                textBox.innerHTML += "평문 : " + plainData + "</br>";
+                textBox.innerHTML += "AES암호문 : " + encAESData + "</br></br>";
+            },10)
+
+        });
+        
+        document.querySelector("#AESdecryption").addEventListener("click",()=>{
+            let iv = nshcDecData.substring(3,nshcDecData.indexOf("|aesKey="));
+            let aesKey = nshcDecData.substring(nshcDecData.indexOf("|aesKey=")+8);
+            let encData = nshcAESEncData;
+ 
+            textBox.innerHTML += "iv : " + iv + "</br>";
+            textBox.innerHTML += "aesKey : " + aesKey + "</br>";
+            textBox.innerHTML += "AES암호문 : " + encData + "</br></br>";
+            AESdecrypt(iv,aesKey,encData);
+            setTimeout(()=>{
+                textBox.innerHTML += "최종 복호화문 : " + finalPlain + "</br></br>";
+            },10)            
+        })
+
+
+
+
+//+ "|data="+nshcAESEncData;
+        document.querySelector("#encryption").addEventListener("click",()=>{
+            let plainData = "";
+            plainData = "iv=" + IV +"|aesKey=" +importAESkey 
+            
+            textBox.innerHTML += "(IV+AESkey+AES암호문)평문 : " + plainData + "</br>";
+            RSAencrypt(plainData);
+            setTimeout(()=>{
+                let encData = nshcEncData + "|data=" + nshcAESEncData;
+                textBox.innerHTML += "(IV+AESkey)암호문 + AES 암호문 : " + encData  + "</br></br>";
+            },10)
+        })
+
+
+
+
+
+        document.querySelector("#decryption").addEventListener("click",()=>{
+            RSAdecrypt(nshcEncData);
+            setTimeout(()=>{
+                let decData = nshcDecData;                
+                textBox.innerHTML += "AES암호문 : " + nshcAESEncData + "</br></br>"; 
+                textBox.innerHTML += "RSA복호문 : " + decData + "</br></br>"; 
+            },10)
+        });
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
