@@ -62,6 +62,7 @@ function solution(land, height) {
     }
     console.log(groups)
     const groupsKey = Object.keys(groups);
+    const distanceChArr = new Array(groupsKey.length);
     for(let i in groupsKey){
         groups[groupsKey[i]].distance = new Array(groupsKey.length);
         groups[groupsKey[i]].distance[i] = 0;
@@ -72,7 +73,7 @@ function solution(land, height) {
             if(i !== j){
                 let cost = 10000;
                 for(let v of member){
-                    const nextGroup = visited[Number(v[0])][Number(v[2])].nextGroup
+                    const nextGroup = visited[v[0]][v[2]].nextGroup
                     for(let k in nextGroup){
                         const ladderCost = Math.abs(land[v[0]][v[2]] -land[nextGroup[k][0]][nextGroup[k][2]]);
                         if(visited[nextGroup[k][0]][nextGroup[k][2]].group===groupsKey[j] && ladderCost < cost){
@@ -84,8 +85,16 @@ function solution(land, height) {
             }
         }
     }
-    const kruskal = (visitGroup,visitedChArr) =>{
-        const chArr =[...visitedChArr];
+    const kruskal = (visitGroup) =>{
+        const idx= groupsKey.indexOf(visitGroup);
+        distanceChArr[idx] = true;
+        let minCost = 10000;
+        let minGroup = ""
+        for(let i in visitChArr){
+            if(!visitChArr[i] && ){
+                
+            }
+        }
     }
     console.log(groups)
     return "not yet";
